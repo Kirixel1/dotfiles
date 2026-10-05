@@ -1,0 +1,80 @@
+{
+  "plugins": {
+    "cellular-automaton.nvim": {
+      "rev": "1606e9d5d04ff254023c3f3c62842d065708d6d3",
+      "src": "https://github.com/Eandrju/cellular-automaton.nvim"
+    },
+    "compile-mode.nvim": {
+      "rev": "dd3e952076a33faba0a55b04b2b73945832c0527",
+      "src": "https://github.com/ej-shafran/compile-mode.nvim"
+    },
+    "dired.nvim": {
+      "rev": "7cf5ceb69a6bbea547f97397fa5310b1571eb03a",
+      "src": "https://github.com/X3eRo0/dired.nvim"
+    },
+    "godot-server.nvim": {
+      "rev": "e9a34f77d63168094f41bb4751ffd10767e01baa",
+      "src": "https://github.com/Cretezy/godot-server.nvim"
+    },
+    "gruber-darker.nvim": {
+      "rev": "aba065c3a79b58cc3863d5c9db319255abd1258a",
+      "src": "https://github.com/blazkowolf/gruber-darker.nvim"
+    },
+    "hydra.nvim": {
+      "rev": "8c4a9f621ec7cdc30411a1f3b6d5eebb12b469dc",
+      "src": "https://github.com/nvimtools/hydra.nvim"
+    },
+    "lualine.nvim": {
+      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
+      "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "mini.nvim": {
+      "rev": "ff8b3580935818ef2f21bdd651f057a2ae071eab",
+      "src": "https://github.com/nvim-mini/mini.nvim"
+    },
+    "multicursors.nvim": {
+      "rev": "72225ea9e4443c3f4b9df91d0193e07c4ee8d382",
+      "src": "https://github.com/smoka7/multicursors.nvim"
+    },
+    "neogit": {
+      "rev": "99326a1310fb2d616b455d2fd16d01bf00682f06",
+      "src": "https://github.com/NeogitOrg/neogit"
+    },
+    "nui.nvim": {
+      "rev": "de740991c12411b663994b2860f1a4fd0937c130",
+      "src": "https://github.com/MunifTanjim/nui.nvim"
+    },
+    "nvim-highlight-colors": {
+      "rev": "e4c7af0211866162d999ce0bdd6a029302e19139",
+      "src": "https://github.com/brenoprata10/nvim-highlight-colors"
+    },
+    "nvim-treesitter": {
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "nvim-treesitter-incremental-selection": {
+      "rev": "407807b3fa28611620389ac4e2b43de70159b656",
+      "src": "https://github.com/shushtain/nvim-treesitter-incremental-selection"
+    },
+    "pdfreader.nvim": {
+      "rev": "f8c067648b0c0d332a8d241111787a6b4d7ba061",
+      "src": "https://github.com/r-pletnev/pdfreader.nvim"
+    },
+    "plenary.nvim": {
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "showkeys": {
+      "rev": "cb0a50296f11f1e585acffba8c253b9e8afc1f84",
+      "src": "https://github.com/nvzone/showkeys"
+    },
+    "snacks.nvim": {
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
+      "src": "https://github.com/folke/snacks.nvim"
+    },
+    "vim-be-good": {
+      "rev": "0ae3de14eb8efc6effe7704b5e46495e91931cc5",
+      "src": "https://github.com/ThePrimeagen/vim-be-good"
+    }
+  }
+}
