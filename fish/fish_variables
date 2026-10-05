@@ -1,0 +1,7 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR EDITOR:/bin/nvim
+SETUVAR --export PKG_CONFIG_ALLOW_SYSTEM_CFLAGS:1
+SETUVAR SHELL:/bin/fish
+SETUVAR __fish_initialized:4300
+SETUVAR fish_user_paths:/home/kirill/opt/telegram\x1e/home/kirill/\x2eopencode/bin\x1e/home/kirill/\x2enimble/bin\x1e/home/kirill/\x2elocal/bin\x1e/home/kirill/\x2elocal/bin/\x2ecargo

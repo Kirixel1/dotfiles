@@ -1,0 +1,12 @@
+[Bookmarks]
+[Recent]
+/home/kirill/media/blender/
+/home/kirill/media/blender/twitch_banners_renders/
+/home/kirill/media/screenshots/diff/
+/home/kirill/media/blender/downloaded_models/hands_low_poly_models/source/
+/usr/share/fonts/
+/home/kirill/media/screenshots/diff/channel_related_images/
+/home/kirill/media/blender/text_break_renders/
+/home/kirill/media/blender/start_soon_screen_renders/
+/home/kirill/media/blender/textures/
+/home/kirill/media/blender/source/

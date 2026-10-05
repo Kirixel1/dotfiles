@@ -1,0 +1,3 @@
+/home/kirill/media/blender/previews_scenes.blend
+/home/kirill/media/blender/text_break_animation.blend
+/home/kirill/media/blender/symbolyc_vizualization.blend
