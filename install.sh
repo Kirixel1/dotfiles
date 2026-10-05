@@ -112,19 +112,22 @@ fi
 
 head1 'Godot'
 link godot/editor_settings-4.7.tres 'editor_settings-4.7.tres'
-link godot/nvim-godot.sh          'nvim-godot.sh (external editor bridge)'
-chmod_ok=0
-if [ -f "$CONFIG/godot/nvim-godot.sh" ] && [ ! -x "$CONFIG/godot/nvim-godot.sh" ]; then
-    chmod_ok=1
-fi
-if [ "$DRY" -eq 0 ] && [ "$chmod_ok" -eq 1 ]; then
-    chmod +x "$CONFIG/godot/nvim-godot.sh"
-    say 'nvim-godot.sh made executable'
-fi
 warn 'these absolute paths in editor_settings need editing for this machine:'
 grep -n '/home/kirill' "$REPO/godot/editor_settings-4.7.tres" 2>/dev/null |
     sed 's/^/        /' >&2 || true
-say 'Set the external editor in Godot: Editor Settings -> Text Editor -> External'
+say ''
+say 'Also portable-unfriendly, and not caught by that grep:'
+grep -n 'terminal_emulator = ' "$REPO/godot/editor_settings-4.7.tres" 2>/dev/null |
+    sed 's/^/        /' >&2 || true
+if [ "$OS" = "Darwin" ]; then
+    say '  macOS kitty lives at:'
+    say '    /Applications/kitty.app/contents/kitty/bin/kitty'
+else
+    say '  Linux path /bin/kitty is correct here.'
+fi
+say 'Edit it in Godot: Editor Settings -> General -> external programs'
+say 'External editor is disabled (use_external_editor = false), so the empty'
+say 'exec_path is inert and Godot opens scripts in its own editor.'
 
 head1 'Blender'
 for ver in 5.1 5.2; do

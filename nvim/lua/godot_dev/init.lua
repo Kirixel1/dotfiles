@@ -1,10 +1,7 @@
 -- A file tree of a Godot project, in a floating window, without switching to Godot.
 --
--- Godot's own "External Editor" setting (Editor Settings -> Text Editor ->
--- External, plus ~/.config/godot/nvim-godot.sh) already handles Godot ->
--- Neovim, and "Auto Reload Scripts on External Change" keeps an open Godot
--- script tab in sync with your :w. So the only missing piece was picking a
--- file without leaving the editor, which is all this does.
+-- The GDScript language server (see the LSP section of init.lua) handles the
+-- language side; this is only about picking a file without leaving the editor.
 --
 -- Deliberately no Godot-side half: asking a *running* editor to open a script
 -- needs EditorInterface.edit_script(), callable only from an EditorPlugin in
