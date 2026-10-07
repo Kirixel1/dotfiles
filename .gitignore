@@ -4,9 +4,6 @@ blender/*/config/recent-files.txt
 blender/*/config/recent-searches.txt
 blender/*/extensions/.cache/
 
-# Superseded by kitty.conf, kept only as a historical copy.
-kitty/kitty.conf.bak
-
 # fish regenerates this from config.fish on first launch.
 fish/fish_variables
 
