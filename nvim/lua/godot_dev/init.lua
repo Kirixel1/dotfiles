@@ -582,60 +582,12 @@ function M.toggle()
 end
 
 --------------------------------------------------------------------------------
--- Jump to a file by name fragment
---------------------------------------------------------------------------------
-
--- Complements the tree: no scrolling, no picker dependency, just type part of a
--- path. Matching is tried most specific first.
-function M.goto_file()
-    local root = require_root()
-    if not root then
-        return
-    end
-
-    local fragment = vim.fn.input('godot_dev> ', '', 'file')
-    if fragment == nil or fragment == '' then
-        return
-    end
-
-    local needle = fragment:lower()
-    local files = scan(root, not state.all_files)
-    local exact, suffix, prefix, substring
-    for _, path in ipairs(files) do
-        local rel = path:sub(#root + 2):lower()
-        if rel == needle then
-            exact = path
-            break
-        end
-        suffix = suffix or (rel:sub(-#needle) == needle and path or nil)
-        prefix = prefix or (rel:sub(1, #needle) == needle and path or nil)
-        substring = substring or (rel:find(needle, 1, true) and path or nil)
-    end
-
-    local chosen = exact or suffix or prefix or substring
-    if not chosen then
-        local ok, sel = pcall(vim.ui.select, files, {
-            prompt = 'godot_dev> no match, pick one:',
-            format_item = function(p)
-                return p:sub(#root + 2)
-            end,
-        })
-        chosen = ok and sel or nil
-    end
-
-    if chosen then
-        vim.cmd.edit({ args = { vim.fn.fnameescape(chosen) } })
-    end
-end
-
---------------------------------------------------------------------------------
 -- Entry point
 --------------------------------------------------------------------------------
 
 function M.setup(user)
     opts = vim.tbl_deep_extend('force', vim.deepcopy(defaults), user or {})
     vim.keymap.set('n', '<leader>gf', M.toggle, { desc = 'Godot: browse project files' })
-    vim.keymap.set('n', '<leader>go', M.goto_file, { desc = 'Godot: go to a project file' })
 end
 
 return M

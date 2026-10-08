@@ -305,7 +305,7 @@ vim.notify = function(msg, ...)
     return notify(msg, ...)
 end
 
--- Godot project file tree: <leader>gf to browse, <leader>go to jump by name.
+-- Godot project file tree: <leader>gf to browse the project.
 require('godot_dev').setup()
 
 -- Godot documentation browser: <leader>gd, backed by the Sphinx inventory.

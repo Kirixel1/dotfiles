@@ -31,6 +31,8 @@ Leader key = `<Space>`
 | `<leader>ts` | `<cmd>lua MiniTrailspace.trim()<CR>` | Trim redundant spaces              |
 | `<leader>mm` | `<cmd>MCstart<CR>`                   | Start multicursor mode             |
 | `<leader>cm` | `<cmd>Compile<CR>`                   | Enters compilation mode            |
+| `<leader>gf`  | `godot_dev.toggle`                    | Browse Godot project files     |
+| `<leader>gd`  | `godot_docs.toggle`                   | Browse Godot documentation     |
 
 </details>
 
