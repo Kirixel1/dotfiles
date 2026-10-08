@@ -308,6 +308,9 @@ end
 -- Godot project file tree: <leader>gf to browse, <leader>go to jump by name.
 require('godot_dev').setup()
 
+-- Godot documentation browser: <leader>gd, backed by the Sphinx inventory.
+require('godot_docs').setup()
+
 -- Search this repo's README keymap tables by description: <leader>sb.
 require('keysearch').setup()
 vim.keymap.set('n', '<leader>sb', function()
