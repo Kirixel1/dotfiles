@@ -1,8 +1,8 @@
-function use-session --description 'Choose the WM started at login: niri or labwc'
+function use-session --description 'Choose the WM started at login: labwc (default) or niri'
     set -l marker $HOME/.config/session-choice
-    set -l valid niri labwc
+    set -l valid labwc niri
 
-    set -l current niri
+    set -l current labwc
     if test -f $marker
         set current (cat $marker)
     end

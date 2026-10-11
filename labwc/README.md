@@ -1,7 +1,8 @@
 # labwc — floating Wayland session
 
-A **non-tiling** window manager, kept alongside niri for testing window sizing.
-niri remains the default session; nothing here changes unless you ask for it.
+The **default** window manager: floating, client-sized windows. niri stays
+installed and one command away (`use-session niri`) if the tiling layout is
+wanted.
 
 ## Why this exists
 
@@ -34,34 +35,32 @@ sudo dnf install labwc
 Pulls in `xdg-desktop-portal-wlr` and `libsfdo`. Nothing else is required —
 you already have kitty, and labwc has no dependency on a panel or wallpaper.
 
-## Switching between niri and labwc
+## Switching between labwc and niri
 
-A marker file decides which one starts at login. **Default is niri**, and the
-marker does not exist unless you create it.
+labwc starts at login by default — the marker file `~/.config/session-choice`
+does not exist, and `config.fish` falls through to `labwc-session`.
 
 ```fish
-use-session              # show current setting
-use-session labwc        # next login starts labwc
-use-session niri         # back to normal
+use-session              # show what will start
+use-session niri         # next login starts niri
+use-session labwc        # back to the default
 ```
 
 Then **log out and log back in**. There is no display manager installed, so
 "logging out" means exiting the compositor from the session itself.
 
-### To try labwc
+### To switch to niri
 
-1. In your niri terminal: `use-session labwc`
-2. Exit niri. (niri's keybind is `Mod+Shift+E { quit; }`, with a confirmation.)
-3. Log in again at the TTY prompt — labwc starts instead.
-
-### To go back to niri
-
-1. In labwc: middle-click the desktop → **Exit labwc**, or press `Alt+F4` on the
+1. `use-session niri`
+2. Exit labwc — middle-click the desktop → **Exit labwc**, or `Alt+F4` on the
    last window.
-2. `use-session niri` at the login prompt.
-3. Log in — niri starts as before.
+3. Log in again at the TTY prompt — niri starts instead.
 
-Or, from labwc, just run `use-session niri` in a kitty window before exiting.
+### To switch back to labwc
+
+1. In niri: `use-session labwc` (or leave it — labwc is the default)
+2. Exit niri — `Mod+Shift+E` (has a confirmation dialog)
+3. Log in — labwc starts.
 
 ## How it works
 
