@@ -16,6 +16,7 @@ alias start_steam='nohup Xephyr :1 -screen 1920x1080 -ac -noreset >/tmp/xephyr.l
 alias gdre='~/programming/probe/godot_tools/gdre/gdre_tools.x86_64'
 alias godot_4_1_1='~/programming/probe/godot_tools/godot-4.1.1-steam/linux-411-editor.x86_64'
 alias anki='~/opt/anki/anki'
+alias sunvox='~/opt/sunvox/sunvox/linux_x86_64/sunvox'
 
 # Paths
 fish_add_path ~/.local/bin/.cargo/

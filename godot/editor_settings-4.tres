@@ -7,6 +7,7 @@ interface/theme/preset = "Godot 2"
 interface/theme/base_color = Color(0.24, 0.23, 0.27, 1)
 interface/theme/accent_color = Color(0.53, 0.67, 0.89, 1)
 interface/theme/contrast = 0.3
+filesystem/file_dialog/show_hidden_files = true
 text_editor/theme/color_theme = "Godot 2"
 export/android/android_sdk_path = ""
 export/android/debug_keystore = ""
