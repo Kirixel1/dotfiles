@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!--
+  labwc configuration - floating (non-tiling) Wayland window manager.
+
+  WHY THIS EXISTS
+  niri is a tiling compositor: it owns window geometry and forces every window
+  to its workspace size, discarding the size an application requested.
+
+  labwc is a stacking/floating WM. It honours the size a client asks for, so
+  fixed-aspect-ratio windows open correctly with NO per-application rules.
+
+  Reload after editing this file with:
+    labwc (reconfigure flag)
+  Note: no double hyphens are allowed inside XML comments.
+-->
+<labwc_config>
+
+  <core>
+    <decoration>server</decoration>
+    <gap>0</gap>
+
+    <!-- Keep XWayland alive between X11 clients.
+         Default is a lazy policy: labwc starts XWayland when an X11 client
+         connects and kills it 10s after the last one leaves (-terminate 10).
+         Every restart invalidates window IDs that X11 clients cached, which
+         produced the Godot "BadWindow" spam and a detached titlebar.
+         NOTE: labwc docs say this one requires a labwc restart to apply. -->
+    <xwaylandPersistence>yes</xwaylandPersistence>
+  </core>
+
+  <!-- Match niri's focus-follows-mouse. -->
+  <focus>
+    <followMouse>yes</followMouse>
+    <followMouseRequiresMovement>yes</followMouseRequiresMovement>
+    <raiseOnFocus>no</raiseOnFocus>
+  </focus>
+
+  <!-- Named so they can be bound by number, mirroring niri's Mod+1..4 -->
+  <desktops>
+    <popupTime>1000</popupTime>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+    </names>
+  </desktops>
+
+  <theme>
+    <!-- Gruvbox Dark, matching gruber-darker.nvim.
+         Themes are Openbox 3.6 format. Search order:
+           ~/.local/share/themes/<Name>/labwc/themerc
+           ~/.local/share/themes/<Name>/openbox-3/themerc
+         Valid keys: name icon fallbackAppIcon font cornerradius keepBorder
+                     maximizedDecoration dropShadows dropShadowsOnTiled
+                     layout.titlebar showTitle.titlebar -->
+    <name>Vercel</name>
+    <keepBorder>no</keepBorder>
+    <cornerRadius>0</cornerRadius>
+    <dropShadows>no</dropShadows>
+    <titlebar>
+      <layout>icon:iconify,max,close</layout>
+      <showTitle>yes</showTitle>
+    </titlebar>
+    <font place="ActiveWindow">
+      <name>Iosevka Fixed</name>
+      <size>10</size>
+      <weight>bold</weight>
+    </font>
+    <font place="InactiveWindow">
+      <name>Iosevka Fixed</name>
+      <size>10</size>
+      <weight>normal</weight>
+    </font>
+  </theme>
+
+  <keyboard>
+    <!-- labwc's built-in binds: Alt+Tab, Alt+F4, Super+a maximize, Super+d
+         show-desktop, snap arrows, volume/brightness.
+         Do NOT remove this line. It is not one of your bindings, it is the
+         base set underneath them - without it nothing basic works. -->
+    <default />
+    <numlock>on</numlock>
+
+    <!-- kitty -->
+    <keybind key="W-t"><action name="Execute" command="kitty" /></keybind>
+
+    <!-- Same as the square button in the titlebar: fills the output but keeps
+         the titlebar and decorations, so you can still drag and close it. -->
+    <keybind key="W-f"><action name="ToggleMaximize" /></keybind>
+
+    <!-- titlebar / decorations back on. Only works outside fullscreen,
+         which is exactly why W-f has to strip them first. -->
+    <keybind key="W-e"><action name="ToggleDecorations" /></keybind>
+
+    <!-- Cycle windows, vim style: h goes back, l goes forward.
+         labwc 0.9.6 has no NextWindowImmediate, so these show the same
+         switcher OSD as Alt+Tab. -->
+    <keybind key="W-h"><action name="PreviousWindow" /></keybind>
+    <keybind key="W-l"><action name="NextWindow" /></keybind>
+
+    <!-- MOVE the focused window to the monitor above / below.
+         DP-4 is at 0,-1080 (above), HDMI-A-4 at 0,0 (below), so
+         K=up and J=down matches the vim-style keys. -->
+    <keybind key="W-S-C-K"><action name="MoveToOutput" direction="up" /></keybind>
+    <keybind key="W-S-C-J"><action name="MoveToOutput" direction="down" /></keybind>
+
+    <!-- MOVE FOCUS to the monitor above / below, leaving windows put.
+         If the target monitor has no windows, the cursor is centred there. -->
+    <keybind key="W-S-K"><action name="FocusOutput" direction="up" /></keybind>
+    <keybind key="W-S-J"><action name="FocusOutput" direction="down" /></keybind>
+  </keyboard>
+
+  <mouse>
+    <!-- REQUIRED. Without this, NO default mouse binds exist at all:
+         dragging, resizing and click-to-focus are all part of it.
+         Losing this is what makes windows impossible to move. -->
+    <default />
+    <doubleClickTime>500</doubleClickTime>
+
+    <!-- Middle click on the desktop opens the root menu, like Openbox. -->
+    <context name="Root">
+      <mousebind button="Middle" action="Click">
+        <action name="ShowMenu" menu="root-menu" />
+      </mousebind>
+    </context>
+  </mouse>
+
+  <libinput>
+    <device category="default">
+      <!-- Match niri's mouse accel-speed -0.8 -->
+      <pointerSpeed>-0.8</pointerSpeed>
+    </device>
+  </libinput>
+
+  <!--
+    Deliberately NO <windowRules> block.
+
+    Every application is floated and sized by the client. This is the entire
+    point of running labwc: game windows open at exactly the resolution they
+    ask for, with no per-game configuration anywhere.
+  -->
+
+</labwc_config>
