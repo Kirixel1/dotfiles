@@ -85,6 +85,9 @@
     <!-- kitty -->
     <keybind key="W-t"><action name="Execute" command="kitty" /></keybind>
 
+    <!-- close the focused window -->
+    <keybind key="W-q"><action name="Close" /></keybind>
+
     <!-- Same as the square button in the titlebar: fills the output but keeps
          the titlebar and decorations, so you can still drag and close it. -->
     <keybind key="W-f"><action name="ToggleMaximize" /></keybind>
@@ -132,6 +135,21 @@
       <pointerSpeed>-0.8</pointerSpeed>
     </device>
   </libinput>
+
+  <resize>
+    <!-- 0 disables labwc's default 8px invisible resize area on every edge.
+
+         That border made a 1920-wide window impossible on a 1920-wide
+         monitor: Godot asked for 1920x960, labwc's frame became 1936 and
+         got clamped to 1904x952. The aspect ratio survived (still 2:1) but
+         1904/240 = 7.93 floored to 7 under scale_mode=integer, so the
+         content still letterboxed.
+
+         Cost: you can no longer resize a window by dragging its edge.
+         Use Super + right-drag, or maximize/fullscreen instead. -->
+    <minimumArea>0</minimumArea>
+    <popupShow>Never</popupShow>
+  </resize>
 
   <!--
     Deliberately NO <windowRules> block.
