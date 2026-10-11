@@ -16,6 +16,109 @@ Because you can reboot into Linux whenever you want, **WSL2 is not needed.**
 WSL2 exists to give Windows users a Linux environment without rebooting; you already
 have that, for free. Don't install it.
 
+### Decision made
+
+Windows is the chosen platform for the game. Everything here is the Linux half of a
+dual-boot machine being given a working second half — nothing is being moved or
+deleted from Linux.
+
+---
+
+## 0.5 The short version — do these in order
+
+The detail is in sections 1-11. This is the whole procedure.
+
+### Step 1 — clone
+
+```powershell
+git clone https://github.com/Kirixel1/dotfiles.git $HOME\dotfiles
+```
+
+### Step 2 — brief the agent
+
+A fresh OpenCode session has no memory of the Linux side. Start with:
+
+```
+Read MIGRATION.md in the dotfiles repo
+```
+
+Do this before anything else, so it works from the file rather than from context
+you would have to retype.
+
+### Step 3 — install the tools
+
+```powershell
+winget install Git.Git
+winget install OpenJS.NodeJS.LTS
+choco install kittywinget install Neovim.Neovim
+winget install BlenderFoundation.Blender
+```
+
+`winget` may prompt to accept package agreements — answer `Y`.
+
+### Step 4 — apply the configs
+
+```powershell
+cd $HOME\dotfiles
+powershell -ExecutionPolicy Bypass -File .\windows\install.ps1 -DryRun
+powershell -ExecutionPolicy Bypass -File .\windows\install.ps1
+```
+
+Run `-DryRun` first. See "Status and known-unknowns" in section 0.5 for why.
+
+### Step 5 — opencode
+
+```powershell
+npm install -g opencode-ai
+```
+
+Launch it, then run `/connect`. **Never copy `auth.json`** from the Linux
+machine — it holds live credentials and is not portable.
+
+---
+
+## Three things that will bite
+
+### Blender version is load-bearing
+
+Your config lives in a folder literally named `5.2`. Install **5.2.x**, not 5.3.
+On 5.3 Blender silently creates an empty `5.3` folder and every preference
+appears to have vanished — which reads as a failed migration when the copy
+worked fine.
+
+### Tick "Save Preferences on Quit" immediately
+
+Preferences → General → Startup. Without it, every addon and theme change
+silently reverts on the next launch. Same failure mode already hit on Linux.
+
+### kitty's Windows installer is not the script
+
+The official `installer.sh` is macOS/Linux only. Windows builds come from
+`github.com/kovidgoyal/kitty/releases`. The current asset name was never
+verified — the GitHub API was unreachable from the Linux machine.
+
+Also install the **Iosevka Fixed** font, or text renders in a fallback face.
+
+---
+
+## Status and known-unknowns
+
+**Good:** the Neovim config should copy verbatim — zero absolute paths, zero
+external binaries, no natively-compiled LSP servers. That is unusually portable;
+configs usually break on exactly those three things.
+
+**Unknown:** `windows/install.ps1` has never been executed. No PowerShell was
+available on the Linux machine. The six Godot path rewrites were verified for
+correct output, but PowerShell's own semantics were not. Hence `-DryRun`.
+
+**Linux loose ends** (do not block the migration):
+- `xwaylandPersistence` sits in `labwc/rc.xml` but never took effect; it needs
+  a labwc restart. The Godot `BadWindow` spam and a detached titlebar are
+  probably still present there.
+- The Godot black-bars question was never cleanly confirmed. labwc appeared to
+  fix the sizing in practice. Moot on Windows, where no compositor decides the
+  window size.
+
 ---
 
 ## 1. Source of truth
