@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "calculator.nvim": {
+      "rev": "1e417c69606318575082ffc283b501523c2ba4ab",
+      "src": "https://github.com/vzze/calculator.nvim"
+    },
     "cellular-automaton.nvim": {
       "rev": "1606e9d5d04ff254023c3f3c62842d065708d6d3",
       "src": "https://github.com/Eandrju/cellular-automaton.nvim"

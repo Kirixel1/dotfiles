@@ -24,14 +24,7 @@ fish_add_path ~/.local/bin/
 fish_add_path ~/.nimble/bin/
 fish_add_path /home/kirill/opt/telegram/
 
-# Startup command for opening window manager automatically only once on login.
-# labwc is the default. Switch back with:  use-session niri
+# Niri startup
 if status is-login
-    set -l wm (test -f $HOME/.config/session-choice; and cat $HOME/.config/session-choice; or echo labwc)
-    switch $wm
-        case niri
-            niri-session -l
-        case '*'
-            labwc-session
-    end
+    niri-session -l
 end

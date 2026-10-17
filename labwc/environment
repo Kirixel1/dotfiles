@@ -1,8 +1,0 @@
-# Environment variables exported to labwc and everything it starts.
-# One VAR=value per line, no `export`, no quotes.
-
-# Mirror niri's keyboard layout config:
-#   layout "us,ru"
-#   options "grp:alt_shift_toggle"
-XKB_DEFAULT_LAYOUT=us,ru
-XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle

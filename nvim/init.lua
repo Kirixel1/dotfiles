@@ -144,6 +144,7 @@ vim.pack.add( {
     'https://github.com/smoka7/multicursors.nvim',                        -- Multicursors plugin
     'https://github.com/nvimtools/hydra.nvim',                            -- Dependency for multicursor plugin
     'https://github.com/folke/snacks.nvim',                               -- QOL plugins but I'm using only image from that
+    'https://github.com/vzze/calculator.nvim',                            -- Calculate inline expressions
 } )
 
 vim.cmd('packadd nvim.undotree')                    -- Enable undotree butil in plugin(only in Neovim 0.12+)
@@ -308,9 +309,6 @@ end
 -- Godot project file tree: <leader>gf to browse the project.
 require('godot_dev').setup()
 
--- Godot documentation browser: <leader>gd, backed by the Sphinx inventory.
-require('godot_docs').setup()
-
 -- Search this repo's README keymap tables by description: <leader>sb.
 require('keysearch').setup()
 vim.keymap.set('n', '<leader>sb', function()
@@ -417,3 +415,6 @@ vim.api.nvim_set_hl(0, 'DiagnosticUnderlineHint', {
     sp = '#73c936',
     underline = true,
 })
+
+-- Calculate plugin setup
+vim.api.nvim_create_user_command("Calculate", "lua require(\"calculator\").calculate()", { ["range"] = 1, ["nargs"] = 0 })
